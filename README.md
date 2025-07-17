@@ -51,8 +51,11 @@ Customers can:
 ##  Screenshots
 
 ###  Owner Dashboard
-![Owner View](images/homepage.png)
+![Owner View](images/main_page.png)
+
+###  Owner Dashboard
+![Cart View](images/cart.png)
 
 ### Customer Cart
-![Cart View](images/cart.png)
+![Customer View](images/customer.png)
 
