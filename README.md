@@ -53,9 +53,9 @@ Customers can:
 ###  Owner Dashboard
 ![Owner View](images/main_page.png)
 
-###  Owner Dashboard
+###  cart page 
 ![Cart View](images/cart.png)
 
-### Customer Cart
+### Customer page
 ![Customer View](images/customer.png)
 
