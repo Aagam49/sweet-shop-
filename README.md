@@ -47,3 +47,12 @@ Customers can:
   - After successful checkout, stock is updated in the owner’s inventory.
 🖼️ Screenshot: Customer Cart
 
+
+##  Screenshots
+
+###  Owner Dashboard
+![Owner View](images/homepage.png)
+
+### Customer Cart
+![Cart View](images/cart.png)
+
