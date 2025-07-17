@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer - Sweet Shop</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #d94f30;
+    }
+    .sweet-card {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .sweet-card h3 {
+      margin: 0 0 5px;
+    }
+    .sweet-card form {
+      display: flex;
+      gap: 5px;
+    }
+    .sweet-card input {
+      width: 60px;
+      padding: 5px;
+    }
+    button {
+      background-color: #d94f30;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #bf4025;
+    }
+    .cart-link {
+      display: block;
+      text-align: right;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buy Your Favorite Sweets</h1>
+    <a href="/cart" class="cart-link">🛒 View Cart</a>
+    {% for sweet in sweets %}
+      <div class="sweet-card">
+        <div>
+          <h3>{{ sweet.name }}</h3>
+          <p>{{ sweet.category }} | ₹{{ sweet.price }} | Available: {{ sweet.quantity }}</p>
+        </div>
+        <form method="POST" action="/add_to_cart/{{ sweet.id }}">
+          <input type="number" name="qty" min="1" max="{{ sweet.quantity }}" value="1">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+    {% else %}
+      <p>No sweets available!</p>
+    {% endfor %}
+  </div>
+</body>
+</html>
