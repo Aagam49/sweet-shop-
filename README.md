@@ -35,4 +35,15 @@ A full-featured inventory management web application for sweet shops, built with
   - Searching by name, category, price
   - Purchasing logic with validations
 
+---
+
+## 🛒 Customer Cart & Purchase
+Customers can:
+  -View available sweets with quantity and price.
+  -Add items to a shopping cart.
+  -Adjust quantity before purchase.
+  -Remove items from the cart.
+  -Checkout only if sufficient stock is available.
+  -After successful checkout, stock is updated in the owner’s inventory.
+🖼️ Screenshot: Customer Cart
 
