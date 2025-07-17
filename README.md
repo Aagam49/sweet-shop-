@@ -4,7 +4,7 @@ A full-featured inventory management web application for sweet shops, built with
 
 ---
 
-## 🚀 Features
+## Features
 
 - Add, delete, and restock sweets
 - Search sweets by name
@@ -16,7 +16,7 @@ A full-featured inventory management web application for sweet shops, built with
 
 ---
 
-## 🗃️ Tech Stack
+## Tech Stack
 
 - **Frontend:** HTML5, CSS3
 - **Backend:** Python, Flask
@@ -26,7 +26,7 @@ A full-featured inventory management web application for sweet shops, built with
 
 ---
 
-## 🧪 Testing
+## Testing
 
 - Unit tests written with `pytest` for:
   - Adding sweets
