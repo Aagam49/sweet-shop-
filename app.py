@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
+app.secret_key = 'aagam_sweet_shop_2025'
+
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sweets.db'
@@ -93,5 +95,57 @@ def search():
     results = Sweet.query.filter(Sweet.name.ilike(f"%{query}%")).all()
     return render_template('index.html', sweets=results, pagination=None)
 
+@app.route('/customer')
+def customer():
+    sweets = Sweet.query.filter(Sweet.quantity > 0).all()
+    return render_template('customer.html', sweets=sweets)
+
+@app.route('/add_to_cart/<int:sweet_id>', methods=['POST'])
+def add_to_cart(sweet_id):
+    qty = int(request.form['qty'])
+    sweet = Sweet.query.get(sweet_id)
+    if not sweet or sweet.quantity < qty:
+        return redirect('/customer')
+
+    cart = session.get('cart', {})
+    if str(sweet_id) in cart:
+        cart[str(sweet_id)]['quantity'] += qty
+    else:
+        cart[str(sweet_id)] = {
+            'id': sweet.id,
+            'name': sweet.name,
+            'price': sweet.price,
+            'quantity': qty
+        }
+    session['cart'] = cart
+    return redirect('/customer')
+
+@app.route('/cart')
+def view_cart():
+    cart = session.get('cart', {})
+    total = sum(item['price'] * item['quantity'] for item in cart.values())
+    return render_template('cart.html', cart=cart, total=total)
+
+@app.route('/remove_from_cart/<int:sweet_id>', methods=['POST'])
+def remove_from_cart(sweet_id):
+    cart = session.get('cart', {})
+    cart.pop(str(sweet_id), None)
+    session['cart'] = cart
+    return redirect('/cart')
+
+@app.route('/checkout', methods=['POST'])
+def checkout():
+    cart = session.get('cart', {})
+    for sweet_id, item in cart.items():
+        sweet = Sweet.query.get(int(sweet_id))
+        if sweet and sweet.quantity >= item['quantity']:
+            sweet.quantity -= item['quantity']
+        else:
+            return "Insufficient stock for some items!"
+    db.session.commit()
+    session['cart'] = {}
+    return redirect('/customer')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
