@@ -1,0 +1,32 @@
+Project Title: Sweet Shop Management System
+
+Author: Aagam Shah
+
+Technologies Used:
+- Python (Flask)
+- HTML, CSS (Frontend)
+- SQLite via SQLAlchemy
+- Git & GitHub for version control
+- Pytest for testing
+
+Features Implemented:
+1. Add, delete, and restock sweets
+2. View inventory with name, category, price, quantity
+3. Search sweets by name
+4. Sort sweets by name, price, quantity (asc/desc)
+5. Pagination (5 sweets per page)
+6. Fully responsive frontend layout
+7. Database connected using Flask-SQLAlchemy
+
+Git Workflow Followed:
+- Initialized git using `git init`
+- Committed changes regularly using `git commit -m "message"`
+- Checked status with `git status`
+- Viewed commit history with `git log` and `git log --oneline`
+- Uploaded project to GitHub for version tracking and sharing
+
+Testing:
+- Unit tests were written using `pytest`
+- Tested add, delete, restock, search, and purchase features
+- Confirmed all tests passed before final commit
+
